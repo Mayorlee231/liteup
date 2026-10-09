@@ -1,0 +1,14 @@
+.env
+.env.*
+.git
+.git/**
+.venv
+.sixth
+tests
+tools
+docs
+uploads/**
+vendor
+LiteUp-*.pdf
+LiteUp-*.pptx
+tmp-*.html

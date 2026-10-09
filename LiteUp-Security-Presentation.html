@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LiteUp Security Presentation | Adewoye Mayowa</title>
+<style>
+:root{--forest:#102820;--green:#147d59;--mint:#d9f3e8;--paper:#f4f7f3;--ink:#17251e;--muted:#5b6f64;--line:#dce5df;--white:#fff;--red:#a83d39;--redbg:#fff2f0;--safe:#176341;--safebg:#eef8f2;--amber:#edaa42}
+*{box-sizing:border-box}html,body{margin:0;background:#e7ede9;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+@page{size:13.333in 7.5in;margin:0}
+.slide{position:relative;width:13.333in;height:7.5in;padding:.5in .66in .52in;background:var(--paper);overflow:hidden;page-break-after:always;break-after:page}
+.slide:last-child{page-break-after:auto;break-after:auto}.topline{position:absolute;left:0;top:0;width:100%;height:.11in;background:var(--green)}
+.kicker{margin:0 0 .1in;color:var(--green);font-size:10pt;font-weight:700;letter-spacing:1.6px;text-transform:uppercase}
+h1,h2,h3,p{margin-top:0}h1{font-size:38pt;line-height:1.05;color:#fff;margin-bottom:.18in;max-width:7.8in}h2{font-size:25pt;line-height:1.08;color:var(--forest);margin-bottom:.1in}h3{font-size:12pt;line-height:1.1;margin-bottom:.07in;color:var(--forest)}
+.vuln-head h2{font-size:23pt}
+p{font-size:10.5pt;line-height:1.32;margin-bottom:.08in}.subtitle{font-size:11pt;color:var(--muted);margin-bottom:.16in}.plain{font-size:13pt;line-height:1.27;color:var(--forest);font-weight:700}
+.cover{color:#fff;background:radial-gradient(ellipse at 80% 50%,#20583f 0,#153729 36%,#102820 70%);display:flex;flex-direction:column;justify-content:center}
+.cover .kicker{color:#b9efd8;font-size:12pt}.cover .intro{max-width:7.7in;font-size:16pt;line-height:1.42;color:#d7e7dd}.cover .person{margin-top:.18in;font-size:17pt;font-weight:700;color:#fff}.cover .school{font-size:12pt;color:#b9efd8;line-height:1.45}.cover .logo{position:absolute;right:.85in;top:1.52in;width:3.25in;height:3.25in;padding:.42in;border:1px solid #ffffff35;border-radius:24px;background:#ffffff0c;object-fit:contain}.cover .hero{position:absolute;right:.55in;bottom:.35in;width:3.6in;height:1.9in;object-fit:cover;opacity:.55;border-radius:14px}.cover .mark{height:.08in;width:.7in;background:var(--amber);margin-bottom:.25in}.cover .footer{border-color:#ffffff35;color:#cce0d4}
+.footer{position:absolute;bottom:.22in;left:.66in;right:.66in;border-top:1px solid var(--line);padding-top:.07in;display:flex;justify-content:space-between;color:var(--muted);font-size:8pt}
+.overview{display:grid;grid-template-columns:1fr 1fr;gap:.14in}.overview .tile{padding:.15in .18in;background:#fff;border:1px solid var(--line);border-radius:9px;min-height:1.26in}.overview .tile strong{display:block;color:var(--forest);font-size:12pt;margin-bottom:.04in}.overview .tile span{font-size:9.5pt;line-height:1.25;color:var(--muted)}
+.tag{display:inline-block;padding:.04in .09in;border-radius:50px;font-size:7.5pt;letter-spacing:.5px;font-weight:700}.tag.red{background:#fae5e3;color:#812d29}.tag.green{background:#e0f3e7;color:#14553a}.tag.gold{background:#fff3dc;color:#78530c}
+.safety{margin-top:.14in;padding:.12in .16in;border-radius:8px;background:var(--forest);color:white;font-size:10pt;line-height:1.3}.safety b{color:#b9efd8}
+.topic-nav{display:flex;flex-wrap:wrap;gap:.07in;margin-top:.11in}.topic-nav span{padding:.06in .1in;border-radius:30px;background:#e5eee8;color:var(--forest);font-size:8pt;font-weight:700}
+.vuln-head{display:flex;justify-content:space-between;align-items:flex-start;gap:.2in}.status{margin-top:.02in;white-space:nowrap}
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:.11in;margin-bottom:.11in}.panel{background:#fff;border:1px solid var(--line);border-radius:9px;padding:.13in .16in;min-height:.9in}.panel p{font-size:9.5pt;line-height:1.25;margin:0}.panel .label{font-size:7.5pt;letter-spacing:.8px;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:.045in}.panel.risk{background:var(--redbg);border-color:#edceca}.panel.risk .label{color:var(--red)}.panel.protected{background:var(--safebg);border-color:#c8e6d5}.panel.protected .label{color:var(--safe)}
+.lower{display:grid;grid-template-columns:1.07fr .93fr;gap:.13in}.steps,.outcome{border-radius:9px;background:#fff;border:1px solid var(--line);padding:.14in .17in;min-height:2.27in}.steps h3,.outcome h3{font-size:11.5pt}.steps ol{margin:0;padding-left:.23in}.steps li{font-size:9.5pt;line-height:1.25;margin-bottom:.04in}.steps code,.outcome code{font:8.6pt Consolas,'Courier New',monospace;overflow-wrap:anywhere;background:#f0f4f1;padding:.015in .03in;border-radius:3px}.outcomes{display:grid;grid-template-columns:1fr 1fr;gap:.09in}.outcome{min-height:0;padding:.12in .14in}.outcome.bad{background:var(--redbg);border-color:#edceca}.outcome.good{background:var(--safebg);border-color:#c8e6d5}.outcome .label{font-size:7pt;letter-spacing:.5px;font-weight:700;margin-bottom:.04in}.outcome.bad .label{color:var(--red)}.outcome.good .label{color:var(--safe)}.outcome p{font-size:8.7pt;line-height:1.23;margin:0}
+.say{margin-top:.11in;background:#eaf2ed;border-left:4px solid var(--amber);padding:.09in .13in;font-size:9.5pt;line-height:1.25;color:var(--forest)}.say b{font-size:7pt;letter-spacing:.8px;text-transform:uppercase;color:var(--green);margin-right:.06in}
+.evidence{display:block;max-width:100%;height:.47in;object-fit:cover;object-position:top left;margin-top:.07in;border:1px solid var(--line);border-radius:5px}
+.finalgrid{display:grid;grid-template-columns:1fr 1fr;gap:.12in}.finalgrid .tile{background:white;border:1px solid var(--line);border-radius:9px;padding:.13in .16in}.finalgrid strong{display:block;font-size:11pt;color:var(--forest);margin-bottom:.04in}.finalgrid span{font-size:9pt;color:var(--muted);line-height:1.25}
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:.1in}.refs div{border:1px solid var(--line);border-radius:8px;background:#fff;padding:.11in .14in;font-size:9pt;line-height:1.25}.refs strong{display:block;color:var(--forest);margin-bottom:.03in}.refs a{color:#176c50;overflow-wrap:anywhere}
+@media screen{.slide{margin:16px auto;box-shadow:0 12px 42px #26372d33}}@media print{html,body{background:#fff}.slide{margin:0;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<section class="slide cover">
+  <div class="mark"></div><p class="kicker">LiteUp · Application Security</p>
+  <h1>Can these vulnerabilities affect LiteUp?</h1>
+  <p class="intro">Seven common web security issues, explained in plain language, with safe local checks and the expected LiteUp response.</p>
+  <div class="person">Adewoye Mayowa</div><div class="school">Cyber Security Student<br>SQI College of ICT · Osogbo Campus</div>
+  <img class="logo" src="asset/images/liteup-logo.svg" alt="LiteUp logo">
+  <img class="hero" src="asset/images/liteup-utility-hero.jpg" alt="LiteUp utility payment app visual">
+  <div class="footer"><span>LITEUP SECURITY PRESENTATION</span><span>01</span></div>
+</section>
+
+<section class="slide">
+  <div class="topline"></div><p class="kicker">A guide for the audience</p><h2>How to understand the checks</h2>
+  <p class="subtitle">Each topic answers three questions: what the weakness means, how to check LiteUp safely, and what the response would look like if the protection were missing.</p>
+  <div class="overview">
+    <div class="tile"><strong><span class="tag red">RED</span> Vulnerable outcome</strong><span>A hypothetical teaching example. It describes what could happen in an unsafe version; it is not evidence that LiteUp was exploited.</span></div>
+    <div class="tile"><strong><span class="tag green">GREEN</span> LiteUp result</strong><span>Based on the project source review or documented local test. Each slide tells you which kind of evidence it is.</span></div>
+    <div class="tile"><strong>Browser checks</strong><span>Use only localhost, a disposable database, dummy login details, and harmless files. Stop if the result differs from the expected safe response.</span></div>
+    <div class="tile"><strong>Source checks</strong><span>File inclusion and command injection have no matching request-controlled feature in reviewed LiteUp code, so those are checked by reading/searching source.</span></div>
+  </div>
+  <div class="topic-nav"><span>01 File Upload</span><span>02 File Inclusion</span><span>03 CORS</span><span>04 Brute Force</span><span>05 Command Injection</span><span>06 SQL Injection</span><span>07 CSRF</span></div>
+  <div class="safety"><b>Safe scope:</b> These steps are for your own LiteUp installation. Do not use real customer accounts, real funds, or a public website for demonstrations.</div>
+  <div class="footer"><span>Evidence labels distinguish source review from local runtime tests</span><span>02</span></div>
+</section>
+
+<section class="slide">
+  <div class="topline"></div><div class="vuln-head"><div><p class="kicker">Topic 01 of 07 · File uploads</p><h2>File Upload Vulnerability</h2></div><span class="tag gold status">SOURCE REVIEW · RUNTIME CHECK NOT RECORDED</span></div>
+  <div class="summary"><div class="panel"><div class="label">Proper definition</div><p>A file upload vulnerability occurs when an application fails to safely validate, store, or serve user-supplied files, such as by trusting the filename, type, contents, or size.</p></div><div class="panel risk"><div class="label">If unprotected</div><p>A harmful or oversized file could be stored or shown to users. Server execution depends on storage and server configuration.</p></div><div class="panel protected"><div class="label">LiteUp status</div><p>Profile image code checks size, actual MIME type, image content, and generates a random filename. Funding proofs have separate type and size checks.</p></div><div class="panel"><div class="label">Where to look</div><p><code>public/profile.php</code> and <code>public/fund_wallet.php</code>. Source review found validation; this presentation did not submit a new upload.</p></div></div>
+  <div class="lower"><div class="steps"><h3>Safe local check · profile image</h3><ol><li>Sign in with a dummy account and open Profile.</li><li>Create a plain text file containing only <code>demo</code>; rename it <code>demo.jpg</code>.</li><li>Select and save it. Check the page message and whether the profile photo changed.</li></ol><p style="font-size:8.5pt;color:var(--muted);margin:.08in 0 0">The file is harmless text, not executable code. Renaming tests whether the server checks the file's contents.</p></div><div class="outcomes"><div class="outcome bad"><div class="label">IF VULNERABLE · HYPOTHETICAL</div><p>The site may accept the text as an image and report success. Risky file types could create further server or user exposure.</p></div><div class="outcome good"><div class="label">LITEUP · EXPECTED</div><p>Reject with: “Please upload a JPG, PNG, GIF, or WebP image.” This is the source-based expected result, not a new runtime capture.</p></div></div></div>
+  <div class="say"><b>Say:</b> “I changed only the name of a harmless text file. LiteUp should inspect the contents and reject it.”</div>
+  <div class="footer"><span>Source review: public/profile.php · public/fund_wallet.php</span><span>03</span></div>
+</section>
+
+<section class="slide">
+  <div class="topline"></div><div class="vuln-head"><div><p class="kicker">Topic 02 of 07 · Local / remote file inclusion</p><h2>File Inclusion Vulnerability</h2></div><span class="tag green status">SOURCE REVIEW · NO REQUEST-CONTROLLED PATH FOUND</span></div>
+  <div class="summary"><div class="panel"><div class="label">Proper definition</div><p>File inclusion is a vulnerability in which untrusted request data controls a file path passed to a server-side include operation, potentially loading an unintended local or remote file.</p></div><div class="panel risk"><div class="label">If unprotected</div><p>Private content might be exposed, or unintended code could run, depending on what file is loaded and server settings.</p></div><div class="panel protected"><div class="label">LiteUp status</div><p>Reviewed PHP pages use fixed application include paths. No request-controlled include path was found.</p></div><div class="panel"><div class="label">Where to look</div><p>Review <code>include</code> and <code>require</code> in <code>public/</code>, <code>admin/</code>, and <code>includes/</code>.</p></div></div>
+  <div class="lower"><div class="steps"><h3>Safe check · source search</h3><ol><li>Open PowerShell in the LiteUp project folder.</li><li>Search PHP files for include paths built from request values:</li></ol><p><code>Get-ChildItem .\public,.\admin,.\includes -Recurse -Filter *.php | Select-String -Pattern 'include\s+.*\$_|require\s+.*\$_'</code></p><p style="font-size:8.5pt;color:var(--muted);margin:.06in 0 0">Inspect any match; a search match alone does not prove a flaw. Do not try to read system files.</p></div><div class="outcomes"><div class="outcome bad"><div class="label">IF VULNERABLE · HYPOTHETICAL</div><p>If visitor input controls the loaded path, the page could include a file the developer did not intend.</p></div><div class="outcome good"><div class="label">LITEUP · REVIEW FINDING</div><p>No user-controlled include path was found. Because no such route exists, there is no safe file-inclusion payload to run on LiteUp.</p></div></div></div>
+  <div class="say"><b>Say:</b> “I checked who chooses the file path. LiteUp's code selects its own fixed files.”</div>
+  <div class="footer"><span>Source review: SECURITY-STATUS.md · fixed paths</span><span>04</span></div>
+</section>
+
+<section class="slide">
+  <div class="topline"></div><div class="vuln-head"><div><p class="kicker">Topic 03 of 07 · Cross-Origin Resource Sharing</p><h2>CORS Misconfiguration</h2></div><span class="tag green status">LOCAL RESPONSE CHECK · NO ALLOW-ORIGIN FOUND</span></div>
+  <div class="summary"><div class="panel"><div class="label">Proper definition</div><p>CORS is a browser-enforced policy that lets a server specify which origins may read its responses. A misconfiguration grants that access too broadly or to an untrusted origin.</p></div><div class="panel risk"><div class="label">If unprotected</div><p>An overly broad policy can let an untrusted site's script read eligible LiteUp responses in a visitor's browser.</p></div><div class="panel protected"><div class="label">LiteUp status</div><p>The reviewed application has no permissive CORS header; the local login response had no <code>Access-Control-Allow-Origin</code>.</p></div><div class="panel"><div class="label">Where to look</div><p>Check response headers from the local login page. This read-only request does not sign in or change data.</p></div></div>
+  <div class="lower"><div class="steps"><h3>Safe check · PowerShell</h3><ol><li>Start Apache and open PowerShell.</li><li>Request the login page with a made-up Origin:</li></ol><p><code>curl.exe -i -H "Origin: https://attacker.invalid" "http://localhost/liteup_app/public/login.php"</code></p><ol start="3"><li>Look for <code>Access-Control-Allow-Origin</code> in the headers.</li></ol></div><div class="outcomes"><div class="outcome bad"><div class="label">IF VULNERABLE · HYPOTHETICAL</div><p>A response granting <code>*</code> or the untrusted origin could allow cross-site scripts to read eligible responses.</p></div><div class="outcome good"><div class="label">LITEUP · EXPECTED</div><p>No <code>Access-Control-Allow-Origin</code> header. No cross-site read permission is granted by the reviewed app.</p></div></div></div>
+  <div class="say"><b>Say:</b> “I labeled a read-only request as coming from an untrusted site, then checked whether LiteUp granted it permission.”</div>
+  <div class="footer"><span>Local response check · SECURITY-STATUS.md</span><span>05</span></div>
+</section>
+
+<section class="slide">
+  <div class="topline"></div><div class="vuln-head"><div><p class="kicker">Topic 04 of 07 · Password guessing</p><h2>Brute-Force Attack</h2></div><span class="tag green status">LOCAL VERIFICATION · 5 ATTEMPTS, THEN BLOCKED</span></div>
+  <div class="summary"><div class="panel"><div class="label">Proper definition</div><p>A brute-force attack repeatedly submits password guesses against an account. Weak or missing rate limits make repeated attempts easier to continue.</p></div><div class="panel risk"><div class="label">If unprotected</div><p>Unlimited guesses give an attacker more chances to take over an account.</p></div><div class="panel protected"><div class="label">LiteUp status</div><p>Atomic rate limiting admits five attempts and blocks later attempts during a 15-minute window for the same source and identity.</p></div><div class="panel"><div class="label">Where to look</div><p><code>public/login.php</code>, <code>includes/security.php</code>, and the recorded <code>test_rate_limiter.php</code> result.</p></div></div>
+  <div class="lower"><div class="steps"><h3>Safe check · dummy identity only</h3><ol><li>Open the local login page. Use a test email or phone and an incorrect password.</li><li>Submit five times; note the response.</li><li>Submit once more and note whether it is rate-limited. Stop after attempt six.</li></ol><p style="font-size:8.5pt;color:var(--muted);margin:.06in 0 0">Use no real account. Wait 15 minutes or use a new dummy identity before repeating.</p></div><div class="outcomes"><div class="outcome bad"><div class="label">IF VULNERABLE · HYPOTHETICAL</div><p>Every guess continues to reach password checking. Persistent guessing increases account-takeover risk.</p></div><div class="outcome good"><div class="label">LITEUP · RECORDED RESULT</div><p>Attempts 1–5 are admitted; attempt 6 is limited with “Invalid login details. Please try again later.”</p></div></div></div>
+  <div class="say"><b>Say:</b> “LiteUp allows five tries, then slows repeated guessing for that test identity.”</div>
+  <div class="footer"><span>Recorded local verification: test_rate_limiter.php · includes/security.php</span><span>06</span></div>
+</section>
+
+<section class="slide">
+  <div class="topline"></div><div class="vuln-head"><div><p class="kicker">Topic 05 of 07 · Operating-system commands</p><h2>Command Injection</h2></div><span class="tag green status">SOURCE REVIEW · NO SHELL SINK FOUND</span></div>
+  <div class="summary"><div class="panel"><div class="label">Proper definition</div><p>Command injection occurs when untrusted input is incorporated into an operating-system command and changes the command or arguments executed by the server.</p></div><div class="panel risk"><div class="label">If unprotected</div><p>The server could run an unintended command, expose data, or alter files within the web-server account's access.</p></div><div class="panel protected"><div class="label">LiteUp status</div><p>No PHP shell-execution API was found in the reviewed application files.</p></div><div class="panel"><div class="label">Where to look</div><p>Search PHP source, then trace any match to see whether request input reaches it. A match alone is not proof.</p></div></div>
+  <div class="lower"><div class="steps"><h3>Safe check · source search only</h3><ol><li>Open PowerShell in the project folder.</li><li>Search the application PHP files for common shell functions:</li></ol><p><code>Get-ChildItem .\public,.\admin,.\includes -Recurse -Filter *.php | Select-String -Pattern 'shell_exec|exec\s*\(|system\s*\(|passthru|proc_open|popen'</code></p><p style="font-size:8.5pt;color:var(--muted);margin:.06in 0 0">Do not submit command strings to the website. This app has no command feature to test.</p></div><div class="outcomes"><div class="outcome bad"><div class="label">IF VULNERABLE · HYPOTHETICAL</div><p>If untrusted text reaches a shell unsafely, it may cause an unauthorized server action.</p></div><div class="outcome good"><div class="label">LITEUP · REVIEW FINDING</div><p>No shell command sink was found. There is no safe payload to run against the current app.</p></div></div></div>
+  <div class="say"><b>Say:</b> “I searched for PHP functions that start system commands and checked whether user input can reach them. None were found.”</div>
+  <div class="footer"><span>Source review only · SECURITY-STATUS.md</span><span>07</span></div>
+</section>
+
+<section class="slide">
+  <div class="topline"></div><div class="vuln-head"><div><p class="kicker">Topic 06 of 07 · Database query injection</p><h2>SQL Injection</h2></div><span class="tag green status">LOCAL TEST · INVALID LOGIN, NO SESSION</span></div>
+  <div class="summary"><div class="panel"><div class="label">Proper definition</div><p>SQL injection is a flaw where untrusted input is combined with a SQL query as executable syntax instead of being handled only as data.</p></div><div class="panel risk"><div class="label">If unprotected</div><p>A login could be bypassed, or database records could be read or changed.</p></div><div class="panel protected"><div class="label">LiteUp status</div><p>The login uses prepared statements. The recorded local test returned an ordinary invalid-login message and created no session.</p></div><div class="panel"><div class="label">Where to look</div><p><code>public/login.php</code> binds login identity values separately from SQL.</p></div></div>
+  <div class="lower"><div class="steps"><h3>Safe check · disposable local database</h3><ol><li>Use only a dummy account on a disposable local database.</li><li>In the login identity field enter <code>' OR 1=1 -- </code>; use any wrong password.</li><li>Submit once. Check the message and verify no login session was created.</li></ol><p style="font-size:8.5pt;color:var(--muted);margin:.06in 0 0">Stop if a sign-in succeeds or a database error appears. This uses one rate-limit attempt.</p></div><div class="outcomes"><div class="outcome bad"><div class="label">IF VULNERABLE · SIMULATED</div><p>Raw input may alter SQL logic. A sign-in bypass or database error could reveal an unsafe query.</p></div><div class="outcome good"><div class="label">LITEUP · CAPTURED LOCAL TEST</div><p>“Invalid login details.” No session created. Prepared parameters keep the input as data.</p><img class="evidence" src="docs/evidence-sql-injection.png" alt="Captured LiteUp invalid-login response"></div></div></div>
+  <div class="say"><b>Say:</b> “LiteUp treated the unusual text as an invalid identity, not as database instructions.”</div>
+  <div class="footer"><span>Captured evidence: docs/evidence-sql-injection.png · public/login.php</span><span>08</span></div>
+</section>
+
+<section class="slide">
+  <div class="topline"></div><div class="vuln-head"><div><p class="kicker">Topic 07 of 07 · Cross-Site Request Forgery</p><h2>Cross-Site Request Forgery (CSRF)</h2></div><span class="tag green status">LOCAL TEST · GET 405, TOKENLESS POST 403</span></div>
+  <div class="summary"><div class="panel"><div class="label">Proper definition</div><p>CSRF is an attack that makes an authenticated user's browser send an unintended state-changing request, relying on the browser's existing session credentials.</p></div><div class="panel risk"><div class="label">If unprotected</div><p>A website could cause an unwanted state-changing action using the visitor's active session.</p></div><div class="panel protected"><div class="label">LiteUp status</div><p>State-changing forms use session tokens. Logout requires POST and checks the token.</p></div><div class="panel"><div class="label">Where to look</div><p><code>public/logout.php</code>, <code>includes/security.php</code>, and the captured local response.</p></div></div>
+  <div class="lower"><div class="steps"><h3>Safe check · dummy account only</h3><ol><li>Sign in locally with the dummy account and open <code>/public/logout.php</code> directly in the same browser; confirm the session remains active.</li><li>In PowerShell, send a tokenless POST:</li></ol><p><code>curl.exe -i -X POST "http://localhost/liteup_app/public/logout.php"</code></p><ol start="3"><li>Read the HTTP status and message. The curl request uses its own session.</li></ol></div><div class="outcomes"><div class="outcome bad"><div class="label">IF VULNERABLE · HYPOTHETICAL</div><p>A request without the user's intent or a valid token may perform the action. In the old logout pattern, a GET could destroy the session.</p></div><div class="outcome good"><div class="label">LITEUP · CAPTURED LOCAL TEST</div><p>GET returns <b>405</b>; POST without a valid token returns <b>403</b>. The normal logout form carries the token.</p><img class="evidence" src="docs/evidence-csrf-logout.png" alt="Captured LiteUp 405 response"></div></div></div>
+  <div class="say"><b>Say:</b> “LiteUp checks both that logout uses POST and that it includes the user's session token.”</div>
+  <div class="footer"><span>Captured evidence: docs/evidence-csrf-logout.png · public/logout.php</span><span>09</span></div>
+</section>
+
+<section class="slide">
+  <div class="topline"></div><p class="kicker">Summary · What LiteUp shows</p><h2>Which issues were found, tested, or reviewed?</h2>
+  <div class="finalgrid">
+    <div class="tile"><strong>File uploads · source review</strong><span>Server-side checks are present. A harmless renamed-text-file upload is the suggested runtime check; not recorded here.</span></div>
+    <div class="tile"><strong>File inclusion · source review</strong><span>No request-controlled include path found. Fixed paths are used.</span></div>
+    <div class="tile"><strong>CORS · local response check</strong><span>No permissive allow-origin header found on the login response.</span></div>
+    <div class="tile"><strong>Brute forcing · local verification</strong><span>Five attempts allowed, then later attempts are limited within 15 minutes.</span></div>
+    <div class="tile"><strong>Command injection · source review</strong><span>No shell-execution sink found in the reviewed app files.</span></div>
+    <div class="tile"><strong>SQL injection · local test</strong><span>Login input was rejected normally; no session was created.</span></div>
+    <div class="tile"><strong>CSRF · local test</strong><span>Logout GET was rejected with 405; tokenless POST was rejected with 403.</span></div>
+    <div class="tile"><strong>Evidence rule</strong><span>Hypothetical vulnerable outcomes are teaching illustrations. Source review is not the same as live proof.</span></div>
+  </div>
+  <div class="safety"><b>Conclusion:</b> LiteUp has useful protections for the reviewed paths. Keep testing only on localhost with dummy accounts, and review any new endpoints before deployment.</div>
+  <div class="footer"><span>Adewoye Mayowa · Cyber Security · SQI College of ICT, Osogbo Campus</span><span>10</span></div>
+</section>
+
+<section class="slide">
+  <div class="topline"></div><p class="kicker">References</p><h2>Project evidence and security guidance</h2>
+  <p class="subtitle">Project-specific claims refer to the LiteUp source or local verification records. External guidance supports the plain-language definitions and prevention concepts.</p>
+  <div class="refs">
+    <div><strong>LiteUp source and test records</strong><span>SECURITY-STATUS.md · TESTING-GUIDE.md · public/login.php · public/profile.php · public/logout.php · includes/security.php · test_rate_limiter.php</span></div>
+    <div><strong>OWASP · File Upload Cheat Sheet</strong><a href="https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html">File upload security guidance</a></div>
+    <div><strong>OWASP · SQL Injection Prevention</strong><a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">Prepared statement guidance</a></div>
+    <div><strong>OWASP · CSRF Prevention</strong><a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html">CSRF token guidance</a></div>
+    <div><strong>OWASP · OS Command Injection Defense</strong><a href="https://cheatsheetseries.owasp.org/cheatsheets/OS_Command_Injection_Defense_Cheat_Sheet.html">Command injection defense</a></div>
+    <div><strong>OWASP · Authentication</strong><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">Authentication and login guidance</a></div>
+    <div><strong>OWASP · HTTP Headers</strong><a href="https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html">CORS and response header guidance</a></div>
+    <div><strong>PHP Manual · include</strong><a href="https://www.php.net/manual/en/function.include.php">PHP include behavior</a></div>
+  </div>
+  <div class="footer"><span>LiteUp Security Presentation · Adewoye Mayowa</span><span>11</span></div>
+</section>
+</body>
+</html>

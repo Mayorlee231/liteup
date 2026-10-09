@@ -1,0 +1,72 @@
+:root {
+    --liteup-forest: #102820;
+    --liteup-green: #147d59;
+    --liteup-mint: #d9f3e8;
+    --liteup-paper: #f4f7f3;
+    --liteup-line: #dce5df;
+}
+
+body.auth-page {
+    min-height: 100vh;
+    color: var(--liteup-forest);
+    background: var(--liteup-paper);
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+}
+
+.auth-page .login-card,
+.auth-page .register-container,
+.auth-page .auth-card,
+.auth-page .card {
+    border: 1px solid var(--liteup-line);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 18px 50px rgba(16, 40, 32, .10);
+}
+
+.auth-page .form-control {
+    min-height: 46px;
+    border-color: #cbd8cf;
+    border-radius: 6px;
+}
+
+.auth-page .form-control:focus {
+    border-color: var(--liteup-green);
+    box-shadow: 0 0 0 .2rem rgba(20, 125, 89, .16);
+}
+
+.auth-page .btn-primary {
+    border-color: var(--liteup-green);
+    background: var(--liteup-green);
+}
+
+.auth-page .btn-primary:hover,
+.auth-page .btn-primary:focus-visible {
+    border-color: var(--liteup-forest);
+    background: var(--liteup-forest);
+}
+
+.auth-page a:not(.btn) { color: var(--liteup-green); }
+.auth-page .auth-brand {
+    display: inline-block;
+    padding: .3rem .65rem;
+    border-radius: 8px;
+    background: var(--liteup-forest);
+}
+.auth-page .auth-brand img { display: block; width: 195px; max-width: 100%; height: auto; }
+.auth-page > .auth-main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem;
+}
+.auth-page .login-card {
+    width: min(100%, 400px);
+    margin: 1rem auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}

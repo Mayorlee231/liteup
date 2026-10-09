@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" role="img" aria-labelledby="title desc">
+  <title id="title">LiteUp</title>
+  <desc id="desc">LiteUp lightning logo</desc>
+  <defs>
+    <linearGradient id="bolt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#55e6c1"/>
+      <stop offset="1" stop-color="#22a6f2"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#bolt)" d="M29 4h22L39 25h17L25 60l8-25H17L29 4Z"/>
+  <text x="68" y="43" fill="#f4fbff" font-family="Trebuchet MS,Arial,sans-serif" font-size="32" font-weight="700" letter-spacing="1">LiteUp</text>
+</svg>
